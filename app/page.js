@@ -1,8 +1,12 @@
-import Image from "next/image";
-import LoginForm from "./components/forms/LoginForm";
+import { cookies } from "next/headers"
+import { redirect } from "next/navigation"
 
-export default function Home() {
-  return <>
-    <LoginForm />
-  </>;
+export default async function Home() {
+  const cookieStore = await cookies()
+  const token = cookieStore.get("token")
+  
+  if(token){
+    redirect("/profile")
+  }
+   redirect("/login")
 }
