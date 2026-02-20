@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { Suspense, useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Spinner } from "@/components/ui/spinner"
 
@@ -52,6 +52,9 @@ export default function LoginForm() {
   }
 
   return (
+    <Suspense fallback={<div className="flex justify-center items-center">
+      <Spinner />
+    </div>}>
     <form onSubmit={handleSubmit}>
       <FieldGroup>
         <Field>
@@ -90,5 +93,6 @@ export default function LoginForm() {
 
       </FieldGroup>
     </form>
+    </Suspense>
   )
 }
