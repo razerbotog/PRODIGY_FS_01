@@ -32,7 +32,7 @@ export default function RegisterForm() {
     console.log(res);
         if (res.ok) {
        setLoading(false)
-      router.push(`/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
+      router.push(`/login?email=${encodeURIComponent(email)}`)
     } else {
       setLoading(false)
       const data = await res.json()
